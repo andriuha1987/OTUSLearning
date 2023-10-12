@@ -25,6 +25,7 @@
         <allure-maven.version>2.10.0</allure-maven.version>
         <allure-junit5.version>2.14.0</allure-junit5.version>
         <lombok.version>1.18.20</lombok.version>
+        <cucumber.version>5.7.0</cucumber.version>
     </properties>
 
     <dependencies>
@@ -66,6 +67,27 @@
             <artifactId>slf4j-simple</artifactId>
             <version>1.7.26</version>
         </dependency>
+
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-guice</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>7.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -96,6 +118,12 @@
                         <test.project.status>test</test.project.status>
                         <test.project.language>${test.project.language}</test.project.language>
                     </systemPropertyVariables>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
+                    <includes>
+                        <include>CucumberRunnerTests.java</include>
+                    </includes>
                 </configuration>
                 <dependencies>
                     <dependency>

@@ -1,13 +1,14 @@
 package ru.otus.qa.auto.components;
 
+import com.google.inject.Inject;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.otus.qa.auto.data.CourseEntry;
 import ru.otus.qa.auto.data.CourseSourceData;
+import ru.otus.qa.auto.di.GuiceScoped;
 import ru.otus.qa.auto.pages.CoursePage;
 
 import java.time.LocalDate;
@@ -18,6 +19,12 @@ import java.util.function.BinaryOperator;
 import java.util.stream.Collectors;
 
 public class SpecializationsComponent extends CoursesComponent<SpecializationsComponent> {
+
+    @Inject
+    public SpecializationsComponent(GuiceScoped guiceScoped) {
+        super(guiceScoped);
+    }
+
     @FindBy(xpath = "//section/*[text()='Специализации']/following-sibling::div/div")
     private List<WebElement> specializations;
 
@@ -94,6 +101,7 @@ public class SpecializationsComponent extends CoursesComponent<SpecializationsCo
         WebElement courseElement = specializationsSection.findElement(By.xpath("./following-sibling::div//*[text()='"
                 + title + "']"));
         actions.moveToElement(courseElement).build().perform();
+        okForAgreement();
         courseElement.click();
         return new CoursePage(driver);
     }

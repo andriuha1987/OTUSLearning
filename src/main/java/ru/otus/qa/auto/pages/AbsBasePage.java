@@ -1,11 +1,13 @@
 package ru.otus.qa.auto.pages;
 
+import com.google.inject.Inject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import ru.otus.qa.auto.annotations.UrlTemplate;
+import ru.otus.qa.auto.di.GuiceScoped;
 
 import java.time.Duration;
 import java.util.List;
@@ -13,6 +15,11 @@ import java.util.List;
 public abstract class AbsBasePage<T> extends AbsPageObject {
     public static final String BASE_URL = System.getProperty("webdriver.base.url");
     public final int documentReadyStateTimeout = Integer.parseInt(System.getProperty("webdriver.timeouts.documentReadyState", "30"));
+
+    @Inject
+    public AbsBasePage(GuiceScoped guiceScoped) {
+        super(guiceScoped);
+    }
 
     public AbsBasePage(WebDriver driver) {
         super(driver);
@@ -34,15 +41,4 @@ public abstract class AbsBasePage<T> extends AbsPageObject {
 
         return (T)this;
     }
-
-    public void okForAgreement() {
-        List<WebElement> elements = driver.findElements(By.xpath("//span[text()='Посещая наш сайт, вы принимаете']/following-sibling::div/button"));
-        if (!elements.isEmpty()) {
-            this.baseWaiter.waitForElementClickable(elements.get(0));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", elements.get(0));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elements.get(0));
-            PageFactory.initElements(driver, this);
-        }
-    }
-
 }
