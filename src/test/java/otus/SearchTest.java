@@ -20,13 +20,11 @@ public class SearchTest {
     private WebDriver driver;
 
     @Test
-    //Д/З №1 поиск курса среди всех на странице + дополнительно добавил выбор курса среди популярных
+    //Д/З №1 поиск курса среди всех на странице
     public void searchOtusCourseByTitle() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        mainPage.okForAgreement();
-        mainPage.searchCourseByTitle("Криптографическая защита информации");
-        new FavoriteCoursesComponent(driver).chooseCourse("BI-аналитика");
+        mainPage.searchCourseByTitle("Специализация Android");
     }
 
     @Test
@@ -34,7 +32,6 @@ public class SearchTest {
     public void searchLastOtusSpecializationByDate() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        mainPage.okForAgreement();
         new SpecializationsComponent(driver).chooseLastCourseByDate();
     }
 
@@ -43,7 +40,6 @@ public class SearchTest {
     public void searchFirstOtusSpecializationByDate() {
         MainPage mainPage = new MainPage(driver);
         mainPage.open();
-        mainPage.okForAgreement();
         new SpecializationsComponent(driver).chooseFirstCourseByDate();
     }
 }

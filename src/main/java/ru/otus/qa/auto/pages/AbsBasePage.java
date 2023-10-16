@@ -4,12 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
 import ru.otus.qa.auto.annotations.UrlTemplate;
 
+import java.time.Duration;
 import java.util.List;
 
-public abstract class AbsBasePage<T> extends AbsPageObject<T> {
+public abstract class AbsBasePage<T> extends AbsPageObject {
     public static final String BASE_URL = System.getProperty("webdriver.base.url");
+    public final int documentReadyStateTimeout = Integer.parseInt(System.getProperty("webdriver.timeouts.documentReadyState", "30"));
 
     public AbsBasePage(WebDriver driver) {
         super(driver);
@@ -26,6 +29,8 @@ public abstract class AbsBasePage<T> extends AbsPageObject<T> {
     public T open() {
         String url = BASE_URL;
         driver.get(url + getPath());
+        okForAgreement();
+        this.baseWaiter.waitForDocumentReadyState(Duration.ofSeconds(documentReadyStateTimeout));
 
         return (T)this;
     }
@@ -33,9 +38,10 @@ public abstract class AbsBasePage<T> extends AbsPageObject<T> {
     public void okForAgreement() {
         List<WebElement> elements = driver.findElements(By.xpath("//span[text()='Посещая наш сайт, вы принимаете']/following-sibling::div/button"));
         if (!elements.isEmpty()) {
+            this.baseWaiter.waitForElementClickable(elements.get(0));
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", elements.get(0));
-            actions.moveToElement(elements.get(0)).build().perform();
-            elements.get(0).click();
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elements.get(0));
+            PageFactory.initElements(driver, this);
         }
     }
 

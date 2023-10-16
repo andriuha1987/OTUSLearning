@@ -1,5 +1,6 @@
 package ru.otus.qa.auto.waiters;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -29,5 +30,14 @@ public class BaseWaiter {
 
     public boolean waitForElementVisible(WebElement element) {
         return waitForCondition(ExpectedConditions.visibilityOf(element));
+    }
+
+    public boolean waitForElementClickable(WebElement element) {
+        return waitForCondition(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    public void waitForDocumentReadyState(Duration duration) {
+        new WebDriverWait(driver, duration).until((ExpectedCondition<Boolean>) wd ->
+                ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete"));
     }
 }

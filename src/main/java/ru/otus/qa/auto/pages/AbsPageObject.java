@@ -5,7 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.PageFactory;
 import ru.otus.qa.auto.waiters.BaseWaiter;
 
-public abstract class AbsPageObject<T> {
+public abstract class AbsPageObject {
     protected WebDriver driver;
     protected Actions actions;
     protected BaseWaiter baseWaiter;

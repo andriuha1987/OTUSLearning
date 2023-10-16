@@ -14,7 +14,7 @@ import java.util.Locale;
 
 public class FactoryWebDriver {
     public final long implicitlyWaitSecond = Integer.parseInt(System.getProperty("webdriver.timeouts.implicitlywait", "5"));
-    public final long pageLoadTimeout = Integer.parseInt(System.getProperty("webdriver.timeouts.pageloadtimeout", "30"));;
+    public final long pageLoadTimeout = Integer.parseInt(System.getProperty("webdriver.timeouts.pageloadtimeout", "30"));
 
     public WebDriver getWebDriver() {
         return getWebDriver(System.getProperty("browser", "chrome").toLowerCase(Locale.ROOT));
