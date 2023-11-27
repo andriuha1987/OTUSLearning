@@ -68,7 +68,9 @@ public class SpecializationsComponent extends CoursesComponent<SpecializationsCo
                         dateBegin = dateBegin + " " + LocalDate.now().getYear();
                     }
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("ru", "RU"));
-                    courseEntry.setBeginDate(LocalDate.parse(dateBegin, formatter));
+                    courseEntry.setBeginDate("О дате старта будет объявлено позже".equals(dateInfo) ?
+                            LocalDate.MAX :
+                            LocalDate.parse(dateBegin, formatter));
 
                     return courseEntry;
                 })
@@ -101,7 +103,7 @@ public class SpecializationsComponent extends CoursesComponent<SpecializationsCo
         WebElement courseElement = specializationsSection.findElement(By.xpath("./following-sibling::div//*[text()='"
                 + title + "']"));
         actions.moveToElement(courseElement).build().perform();
-        okForAgreement();
+        closeBanners();
         courseElement.click();
         return new CoursePage(driver);
     }

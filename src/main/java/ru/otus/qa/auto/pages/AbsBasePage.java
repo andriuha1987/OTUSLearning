@@ -36,7 +36,7 @@ public abstract class AbsBasePage<T> extends AbsPageObject {
     public T open() {
         String url = BASE_URL;
         driver.get(url + getPath());
-        okForAgreement();
+        closeBanners();
         this.baseWaiter.waitForDocumentReadyState(Duration.ofSeconds(documentReadyStateTimeout));
 
         return (T)this;

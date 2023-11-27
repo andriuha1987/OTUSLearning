@@ -40,4 +40,16 @@ public abstract class AbsPageObject {
             PageFactory.initElements(driver, this);
         }
     }
+
+    public void closeBanner() {
+        List<WebElement> elements = driver.findElements(By.xpath("//div[contains(@class, 'sticky-banner-close')]"));
+        if (!elements.isEmpty() && elements.get(0).isDisplayed()) {
+            elements.get(0).click();
+        }
+    }
+
+    public void closeBanners() {
+        okForAgreement();
+        closeBanner();
+    }
 }
