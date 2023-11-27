@@ -3,6 +3,9 @@ package ru.otus.qa.auto.factory.impl;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ChromeSettings implements IBrowserSettings {
 
     @Override

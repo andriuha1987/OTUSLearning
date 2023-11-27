@@ -15,6 +15,9 @@
         <selenium.java.version>4.13.0</selenium.java.version>
         <junit.version>5.7.0</junit.version>
         <browser>chrome</browser>
+        <browser.version>119.0</browser.version>
+        <selenoid.enabled>true</selenoid.enabled>
+        <selenoid.url>http://127.0.0.1/wd/hub/</selenoid.url>
         <webdriver.base.url>https://otus.ru</webdriver.base.url>
         <test.project.language>RU</test.project.language>
         <aspectj.version>1.9.6</aspectj.version>
@@ -113,6 +116,9 @@
 
                     <systemPropertyVariables>
                         <browser>${browser}</browser>
+                        <selenoid.enabled>${selenoid.enabled}</selenoid.enabled>
+                        <selenoid.url>${selenoid.url}</selenoid.url>
+                        <browser.version>${browser.version}</browser.version>
                         <webdriver.timeouts.implicitlywait>${webdriver.timeouts.implicitlywait}</webdriver.timeouts.implicitlywait>
                         <webdriver.base.url>${webdriver.base.url}</webdriver.base.url>
                         <test.project.status>test</test.project.status>

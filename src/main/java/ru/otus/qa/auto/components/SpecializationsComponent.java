@@ -68,9 +68,9 @@ public class SpecializationsComponent extends CoursesComponent<SpecializationsCo
                         dateBegin = dateBegin + " " + LocalDate.now().getYear();
                     }
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("ru", "RU"));
-                    courseEntry.setBeginDate("О дате старта будет объявлено позже".equals(dateInfo) ?
-                            LocalDate.MAX :
-                            LocalDate.parse(dateBegin, formatter));
+                    courseEntry.setBeginDate("О дате старта будет объявлено позже".equals(dateInfo)
+                            ? LocalDate.MAX
+                            : LocalDate.parse(dateBegin, formatter));
 
                     return courseEntry;
                 })
