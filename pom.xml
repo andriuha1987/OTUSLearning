@@ -25,6 +25,7 @@
         <allure-maven.version>2.10.0</allure-maven.version>
         <allure-junit5.version>2.14.0</allure-junit5.version>
         <lombok.version>1.18.20</lombok.version>
+        <allure.version>2.24.0</allure.version>
     </properties>
 
     <dependencies>
@@ -77,6 +78,12 @@
             <artifactId>spotbugs-maven-plugin</artifactId>
             <version>4.7.3.6</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -92,7 +99,9 @@
 <!--                    <perCoreThreadCount>${perCoreThreadCount}</perCoreThreadCount>-->
 <!--                    <useUnlimitedThreads>${useUnlimitedThreads}</useUnlimitedThreads>-->
 <!--                    <threadCountMethods>${thread.count}</threadCountMethods>-->
-
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <systemProperties>
                         <property>
                             <name>junit.jupiter.extensions.autodetection.enabled</name>
