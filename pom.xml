@@ -29,6 +29,7 @@
         <allure-junit5.version>2.14.0</allure-junit5.version>
         <lombok.version>1.18.20</lombok.version>
         <cucumber.version>5.7.0</cucumber.version>
+        <allure.version>2.24.0</allure.version>
     </properties>
 
     <dependencies>
@@ -91,6 +92,11 @@
             <artifactId>guice</artifactId>
             <version>7.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-cucumber5-jvm</artifactId>
+            <version>${allure.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -100,13 +106,9 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.plugin.version}</version>
                 <configuration>
-<!--                    <forkCount>${forkCount}</forkCount>-->
-<!--                    <reuseForks>${reuseForks}</reuseForks>-->
-<!--                    <parallel>${parallel}</parallel>-->
-<!--                    <perCoreThreadCount>${perCoreThreadCount}</perCoreThreadCount>-->
-<!--                    <useUnlimitedThreads>${useUnlimitedThreads}</useUnlimitedThreads>-->
-<!--                    <threadCountMethods>${thread.count}</threadCountMethods>-->
-
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                     <systemProperties>
                         <property>
                             <name>junit.jupiter.extensions.autodetection.enabled</name>
