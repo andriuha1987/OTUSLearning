@@ -26,6 +26,7 @@
         <allure-junit5.version>2.14.0</allure-junit5.version>
         <lombok.version>1.18.20</lombok.version>
         <citrus.version>4.0.2</citrus.version>
+        <allure.version>2.24.0</allure.version>
     </properties>
 
     <dependencies>
@@ -101,6 +102,12 @@
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
             <version>2.3.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
