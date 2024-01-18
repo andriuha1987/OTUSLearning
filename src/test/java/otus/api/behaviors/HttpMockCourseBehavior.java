@@ -1,11 +1,11 @@
 package otus.api.behaviors;
 
-import static org.citrusframework.http.actions.HttpActionBuilder.http;
+import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
-import org.citrusframework.TestActionRunner;
-import org.citrusframework.TestBehavior;
-import org.citrusframework.message.MessageType;
-import org.citrusframework.message.builder.ObjectMappingPayloadBuilder;
+import com.consol.citrus.TestActionRunner;
+import com.consol.citrus.TestBehavior;
+import com.consol.citrus.message.MessageType;
+import com.consol.citrus.message.builder.ObjectMappingPayloadBuilder;
 import otus.api.dto.http.CourseDto;
 
 import java.util.List;

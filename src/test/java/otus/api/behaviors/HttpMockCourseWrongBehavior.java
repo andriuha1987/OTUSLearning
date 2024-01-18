@@ -1,9 +1,9 @@
 package otus.api.behaviors;
 
-import static org.citrusframework.http.actions.HttpActionBuilder.http;
+import static com.consol.citrus.http.actions.HttpActionBuilder.http;
 
-import org.citrusframework.TestActionRunner;
-import org.citrusframework.TestBehavior;
+import com.consol.citrus.TestActionRunner;
+import com.consol.citrus.TestBehavior;
 import org.springframework.http.HttpStatus;
 
 /*

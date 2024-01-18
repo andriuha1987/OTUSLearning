@@ -1,7 +1,6 @@
 package otus.api.dto.soap;
 
-import jakarta.xml.bind.annotation.*;
-
+import javax.xml.bind.annotation.*;
 
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {

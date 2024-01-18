@@ -1,17 +1,17 @@
 package otus.api;
 
-import static org.citrusframework.actions.ApplyTestBehaviorAction.Builder.apply;
-import static org.citrusframework.actions.EchoAction.Builder.echo;
-import static org.citrusframework.actions.LoadPropertiesAction.Builder.load;
-import static org.citrusframework.http.actions.HttpActionBuilder.http;
-import static org.citrusframework.validation.json.JsonPathMessageValidationContext.Builder.jsonPath;
+import static com.consol.citrus.actions.ApplyTestBehaviorAction.Builder.apply;
+import static com.consol.citrus.actions.EchoAction.Builder.echo;
+import static com.consol.citrus.actions.LoadPropertiesAction.Builder.load;
+import static com.consol.citrus.http.actions.HttpActionBuilder.http;
+import static com.consol.citrus.validation.json.JsonPathMessageValidationContext.Builder.jsonPath;
 
-import org.citrusframework.TestCaseRunner;
-import org.citrusframework.annotations.CitrusResource;
-import org.citrusframework.annotations.CitrusTest;
-import org.citrusframework.context.TestContext;
-import org.citrusframework.junit.jupiter.CitrusExtension;
-import org.citrusframework.junit.jupiter.CitrusSupport;
+import com.consol.citrus.TestCaseRunner;
+import com.consol.citrus.annotations.CitrusResource;
+import com.consol.citrus.annotations.CitrusTest;
+import com.consol.citrus.context.TestContext;
+import com.consol.citrus.junit.jupiter.CitrusExtension;
+import com.consol.citrus.junit.jupiter.CitrusSupport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -29,7 +29,7 @@ public class TestUser {
 
     @BeforeEach
     public void init(@CitrusResource TestCaseRunner runner) {
-        runner.$(load().filePath("file:src/test/resources/load.properties"));
+        runner.$(load("file:src/test/resources/load.properties"));
     }
 
     @CitrusTest

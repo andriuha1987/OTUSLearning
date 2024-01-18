@@ -1,6 +1,6 @@
 package otus.api.dto.soap;
 
-import org.citrusframework.xml.Marshaller;
+import com.consol.citrus.xml.Marshaller;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 //Citrus хочет, чтобы класс имплементил Marshaller
